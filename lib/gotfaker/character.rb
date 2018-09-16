@@ -4,7 +4,7 @@ require 'open-uri'
 module GOTFaker
   class Character
     noko = Nokogiri::HTML(open("http://awoiaf.westeros.org/index.php/List_of_characters"))
-    @names = noko.search('#mw-content-text > ul >li> a:first-child').map{|name| name.inner_text}
+    @names = noko.search('#mw-content-text ul li a:first-child').map{|name| name.inner_text}.uniq
 
 
     def self.random_name
